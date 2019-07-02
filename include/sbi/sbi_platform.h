@@ -110,6 +110,7 @@ struct sbi_platform_operations {
 	int (*system_reboot)(u32 type);
 	/** Shutdown or poweroff the platform */
 	int (*system_shutdown)(u32 type);
+	int (*dummy)(u32 type,u64 *temp);
 } __packed;
 
 /** Representation of a platform */
@@ -496,6 +497,14 @@ static inline int sbi_platform_system_shutdown(const struct sbi_platform *plat,
 {
 	if (plat && sbi_platform_ops(plat)->system_shutdown)
 		return sbi_platform_ops(plat)->system_shutdown(type);
+	return 0;
+}
+
+static inline int sbi_platform_system_dummy(const struct sbi_platform *plat,
+					       u32 type, u64 *temp)
+{
+	if (plat && sbi_platform_ops(plat)->dummy)
+		return sbi_platform_ops(plat)->dummy(type, temp);
 	return 0;
 }
 

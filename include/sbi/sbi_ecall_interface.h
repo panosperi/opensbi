@@ -21,7 +21,7 @@
 #define SBI_ECALL_REMOTE_SFENCE_VMA		6
 #define SBI_ECALL_REMOTE_SFENCE_VMA_ASID	7
 #define SBI_ECALL_SHUTDOWN			8
-
+#define SBI_ECALL_DUMMY			9
 /* clang-format on */
 
 #define SBI_ECALL(__num, __a0, __a1, __a2)                                    \

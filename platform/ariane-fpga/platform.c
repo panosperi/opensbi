@@ -173,6 +173,24 @@ static int ariane_system_shutdown(u32 type)
 	return 0;
 }
 
+static int ariane_system_dummy(u32 type, u64 *temp)
+{
+
+// 	unsigned long int addr;
+// 	int value;
+// 	struct sbi_scratch *scratch;
+//   	struct unpriv_trap trap;
+// 	sbi_printf("ariane_system_dummy\n");
+// // 	addr=(unsigned long int)temp;
+// 	scratch=sbi_scratch_thishart_ptr();
+//   	value = load_u64(temp,scratch, &trap);
+//
+// 	sbi_printf("value=%d\n",value);
+//
+//   	store_u64(temp,999,scratch, &trap);
+	return 0;
+}
+
 /*
  * Platform descriptor.
  */
@@ -192,7 +210,8 @@ const struct sbi_platform_operations platform_ops = {
 	.timer_event_start = clint_timer_event_start,
 	.timer_event_stop = clint_timer_event_stop,
 	.system_reboot = ariane_system_reboot,
-	.system_shutdown = ariane_system_shutdown
+	.system_shutdown = ariane_system_shutdown,
+	.dummy = ariane_system_dummy
 };
 
 const struct sbi_platform platform = {
@@ -205,3 +224,4 @@ const struct sbi_platform platform = {
 	.disabled_hart_mask = 0,
 	.platform_ops_addr = (unsigned long)&platform_ops
 };
+

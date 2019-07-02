@@ -43,3 +43,10 @@ sbi_system_shutdown(struct sbi_scratch *scratch, u32 type)
 
 	sbi_hart_hang();
 }
+
+int sbi_system_dummy(struct sbi_scratch *scratch, u32 type, u64 *temp)
+{
+	/* First try the platform-specific method */
+	sbi_platform_system_dummy(sbi_platform_ptr(scratch), type, temp);
+	return 0;
+}

@@ -89,6 +89,10 @@ int sbi_ecall_handler(u32 hartid, ulong mcause, struct sbi_trap_regs *regs,
 		sbi_system_shutdown(scratch, 0);
 		ret = 0;
 		break;
+	case SBI_ECALL_DUMMY:
+		sbi_system_dummy(scratch, 0,   (u64 *)regs->a0 );
+		ret = 0;
+		break;
 	default:
 		regs->a0 = SBI_ENOTSUPP;
 		ret	 = 0;

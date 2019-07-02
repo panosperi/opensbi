@@ -24,4 +24,5 @@ sbi_system_reboot(struct sbi_scratch *scratch, u32 type);
 void __attribute__((noreturn))
 sbi_system_shutdown(struct sbi_scratch *scratch, u32 type);
 
+int sbi_system_dummy(struct sbi_scratch *scratch, u32 type, u64 *temp);
 #endif
